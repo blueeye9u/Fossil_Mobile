@@ -73,7 +73,7 @@ class Register extends ConsumerWidget {
               child: Padding(
                 padding: EdgeInsets.only(top: 28, bottom: 20),
                 child: Image.asset(
-                  "/images/fossil-logo.png",
+                  "assets/images/fossil-logo.png",
                   fit: BoxFit.fill,
                 ),
               ),
