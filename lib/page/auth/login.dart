@@ -4,7 +4,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fossil_mobile/constants/colors.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:fossil_mobile/common/button.dart';
 import 'package:fossil_mobile/common/label.dart';
 import 'package:fossil_mobile/common/navigator.dart';
@@ -40,25 +41,17 @@ class Login extends ConsumerWidget {
         passwordController.text,
       );
       if (result.user != null) {
-        Fluttertoast.showToast(
-            msg: "Successfully logged in",
-            toastLength: Toast.LENGTH_LONG,
-            gravity: ToastGravity.CENTER,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.red,
-            textColor: Colors.white,
-            fontSize: 16.0);
+        showSimpleNotification(Label(text: "Successfully logged in"),
+            background: primaryColor,
+            autoDismiss: true,
+            duration: Duration(seconds: 3));
         Timer(Duration(seconds: 2), navigateToHome);
       } else {
-        Fluttertoast.showToast(
-          msg: result.errorMessage ?? 'Unknown error',
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0,
-        );
+        showSimpleNotification(
+            Label(text: result.errorMessage ?? 'Unknown error'),
+            background: primaryColor,
+            autoDismiss: true,
+            duration: Duration(seconds: 3));
       }
     }
 
