@@ -64,11 +64,11 @@ class AuthRepository implements AuthRepositoryProtocol {
       );
     }
     final params = {
-      'name': name,
+      'username': name,
       'email': email,
       'password': password,
     };
-    final loginResponse = await _api.post('/auth/signin', jsonEncode(params));
+    final loginResponse = await _api.post('/auth/signup', jsonEncode(params));
 
     return loginResponse.when(success: (success) async {
       final tokenRepository = _ref.read(tokenRepositoryProvider);

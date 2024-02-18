@@ -1,16 +1,12 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable, use_key_in_widget_constructors
 
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fossil_mobile/constants/colors.dart';
 import 'package:fossil_mobile/features/auth/provider/auth_provider.dart';
-import 'package:fossil_mobile/features/auth/widget/login.dart';
-import 'package:overlay_support/overlay_support.dart';
+import 'package:fossil_mobile/shared/route/app_router.dart';
+import 'package:go_router/go_router.dart';
 import 'package:fossil_mobile/common/button.dart';
 import 'package:fossil_mobile/common/label.dart';
-import 'package:fossil_mobile/common/navigator.dart';
 import 'package:fossil_mobile/common/text_field.dart';
 
 class Register extends ConsumerWidget {
@@ -23,29 +19,6 @@ class Register extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    void navigateToLogin() {
-      NavigationUtil.navigateToPage(context, Login());
-    }
-
-    Future<void> register() async {
-      ref.read(authNotifierProvider.notifier).signUp(usernameController.text,
-          emailController.text, passwordController.text);
-
-      // if (result.user != null) {
-      showSimpleNotification(Label(text: "Successfully registered in"),
-          background: primaryColor,
-          autoDismiss: true,
-          duration: Duration(seconds: 3));
-      Timer(Duration(seconds: 2), navigateToLogin);
-      // } else {
-      //   showSimpleNotification(
-      //       Label(text: result.errorMessage ?? 'Unknown error'),
-      //       background: primaryColor,
-      //       autoDismiss: true,
-      //       duration: Duration(seconds: 3));
-      // }
-    }
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
@@ -168,7 +141,11 @@ class Register extends ConsumerWidget {
               padding: const EdgeInsets.only(top: 18.0),
               child: CustomButton(
                   onPress: () {
-                    register();
+                    ref.read(authNotifierProvider.notifier).signUp(
+                        usernameController.text,
+                        emailController.text,
+                        passwordController.text);
+                    context.go(SignInRoute.path);
                   },
                   buttonText: "Register",
                   borderRadius: BorderRadius.circular(8),
@@ -180,7 +157,7 @@ class Register extends ConsumerWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    NavigationUtil.navigateToPage(context, Login());
+                    context.go(SignInRoute.path);
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(top: 20),
