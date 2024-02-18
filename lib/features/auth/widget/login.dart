@@ -5,13 +5,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fossil_mobile/constants/colors.dart';
 import 'package:fossil_mobile/features/auth/provider/auth_provider.dart';
 import 'package:fossil_mobile/features/auth/state/auth_state.dart';
-import 'package:fossil_mobile/features/auth/widget/register.dart';
 import 'package:fossil_mobile/shared/route/app_router.dart';
 import 'package:go_router/go_router.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:fossil_mobile/common/button.dart';
 import 'package:fossil_mobile/common/label.dart';
-import 'package:fossil_mobile/common/navigator.dart';
 import 'package:fossil_mobile/common/text_field.dart';
 
 class Login extends ConsumerWidget {
@@ -164,12 +162,6 @@ class Login extends ConsumerWidget {
                         .read(authNotifierProvider.notifier)
                         .login(emailController.text, passwordController.text);
                     _handleAuthenticationResult(authState, context);
-                    // showSimpleNotification(Label(text: "//response here"),
-                    //     background: primaryColor,
-                    //     autoDismiss: true,
-                    //     duration: Duration(seconds: 3));
-                    // context.go('/');
-                    // Timer(Duration(seconds: 2), navigateToHome);
                   },
                   buttonText: "Login",
                   borderRadius: BorderRadius.circular(8),
@@ -181,7 +173,7 @@ class Login extends ConsumerWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    NavigationUtil.navigateToPage(context, Register());
+                    context.go(SignUpRoute.path);
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(top: 20),
