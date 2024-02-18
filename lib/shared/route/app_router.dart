@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:fossil_mobile/app/widget/app_start_page.dart';
 import 'package:fossil_mobile/features/auth/widget/login.dart';
 import 'package:fossil_mobile/features/auth/widget/register.dart';
+import 'package:fossil_mobile/features/hoses/widget/hose.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -60,6 +61,18 @@ class SignUpRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return Register();
+  }
+}
+
+@TypedGoRoute<HosePageRoute>(path: HosePageRoute.path)
+class HosePageRoute extends GoRouteData {
+  const HosePageRoute();
+
+  static const path = '/hoses';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return HosePage();
   }
 }
 

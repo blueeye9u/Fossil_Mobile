@@ -8,6 +8,8 @@ import 'package:fossil_mobile/constants/colors.dart';
 import 'package:fossil_mobile/features/home/components/company.dart';
 import 'package:fossil_mobile/features/home/provider/company_provider.dart';
 import 'package:fossil_mobile/shared/http/app_exception.dart';
+import 'package:fossil_mobile/shared/route/app_router.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends ConsumerWidget {
   HomePage({super.key});
@@ -18,9 +20,7 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
         backgroundColor: secondaryColor,
         leading: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
+          onTap: () {},
           child: Padding(
             padding: EdgeInsets.only(left: 16.0, top: 10.0, bottom: 1.0),
             child: Container(
@@ -98,7 +98,9 @@ class HomePage extends ConsumerWidget {
                 height: 20,
               ),
               CustomButton(
-                  onPress: () {},
+                  onPress: () {
+                    context.go(HosePageRoute.path);
+                  },
                   buttonText: "Go",
                   btnWidth: 160,
                   btnHeight: 45,

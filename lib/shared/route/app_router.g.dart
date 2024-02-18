@@ -10,6 +10,7 @@ List<RouteBase> get $appRoutes => [
       $appRoute,
       $signInRoute,
       $signUpRoute,
+      $hosePageRoute,
     ];
 
 RouteBase get $appRoute => GoRouteData.$route(
@@ -66,6 +67,28 @@ extension $SignUpRouteExtension on SignUpRoute {
 
   String get location => GoRouteData.$location(
         '/auth/signup',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $hosePageRoute => GoRouteData.$route(
+      path: '/hoses',
+      factory: $HosePageRouteExtension._fromState,
+    );
+
+extension $HosePageRouteExtension on HosePageRoute {
+  static HosePageRoute _fromState(GoRouterState state) => const HosePageRoute();
+
+  String get location => GoRouteData.$location(
+        '/hoses',
       );
 
   void go(BuildContext context) => context.go(location);
