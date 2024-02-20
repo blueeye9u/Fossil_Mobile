@@ -1,6 +1,4 @@
 import 'package:fossil_mobile/app/provider/app_start_provider.dart';
-import 'package:fossil_mobile/app/state/app_start_state.dart';
-import 'package:fossil_mobile/features/auth/provider/auth_provider.dart';
 import 'package:fossil_mobile/features/home/repository/company_repository.dart';
 import 'package:fossil_mobile/features/home/state/company_state.dart';
 import 'package:fossil_mobile/shared/http/app_exception.dart';

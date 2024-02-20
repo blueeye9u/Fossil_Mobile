@@ -2,15 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fossil_mobile/constants/colors.dart';
+
 import 'package:fossil_mobile/features/auth/provider/auth_provider.dart';
 import 'package:fossil_mobile/features/auth/state/auth_state.dart';
+import 'package:fossil_mobile/shared/constants/colors.dart';
+import 'package:fossil_mobile/shared/constants/image_string.dart';
 import 'package:fossil_mobile/shared/route/app_router.dart';
 import 'package:go_router/go_router.dart';
 import 'package:overlay_support/overlay_support.dart';
-import 'package:fossil_mobile/common/button.dart';
-import 'package:fossil_mobile/common/label.dart';
-import 'package:fossil_mobile/common/text_field.dart';
+import 'package:fossil_mobile/shared/common/button.dart';
+import 'package:fossil_mobile/shared/common/label.dart';
+import 'package:fossil_mobile/shared/common/text_field.dart';
 
 class Login extends ConsumerWidget {
   Login({Key? key});
@@ -31,7 +33,7 @@ class Login extends ConsumerWidget {
             background: primaryColor,
             autoDismiss: true,
             duration: Duration(seconds: 3));
-        context.go(SignInRoute.path);
+        context.go(AppRoute.path);
       },
       loggedOut: () {
         // Handle logged out state
@@ -43,6 +45,7 @@ class Login extends ConsumerWidget {
                 255, 247, 130, 122), // or any other color for error
             autoDismiss: true,
             duration: Duration(seconds: 3));
+        context.go(AppRoute.path);
       },
     );
   }
@@ -66,7 +69,7 @@ class Login extends ConsumerWidget {
               child: Padding(
                 padding: EdgeInsets.only(top: 28, bottom: 20),
                 child: Image.asset(
-                  "assets/images/fossil-logo.png",
+                  logoUrl,
                   fit: BoxFit.fill,
                 ),
               ),

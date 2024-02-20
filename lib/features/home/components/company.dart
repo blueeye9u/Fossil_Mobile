@@ -4,7 +4,7 @@
 
 import 'package:awesome_select/awesome_select.dart';
 import 'package:flutter/material.dart';
-import 'package:fossil_mobile/constants/colors.dart';
+import 'package:fossil_mobile/shared/constants/colors.dart';
 import 'package:fossil_mobile/features/home/model/company.dart';
 
 // ignore: must_be_immutable

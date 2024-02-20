@@ -2,12 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fossil_mobile/shared/constants/image_string.dart';
 import 'package:fossil_mobile/features/auth/provider/auth_provider.dart';
 import 'package:fossil_mobile/shared/route/app_router.dart';
 import 'package:go_router/go_router.dart';
-import 'package:fossil_mobile/common/button.dart';
-import 'package:fossil_mobile/common/label.dart';
-import 'package:fossil_mobile/common/text_field.dart';
+import 'package:fossil_mobile/shared/common/button.dart';
+import 'package:fossil_mobile/shared/common/label.dart';
+import 'package:fossil_mobile/shared/common/text_field.dart';
 
 class Register extends ConsumerWidget {
   Register({Key? key});
@@ -35,7 +36,7 @@ class Register extends ConsumerWidget {
               child: Padding(
                 padding: EdgeInsets.only(top: 28, bottom: 20),
                 child: Image.asset(
-                  "assets/images/fossil-logo.png",
+                  logoUrl,
                   fit: BoxFit.fill,
                 ),
               ),

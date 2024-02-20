@@ -7,6 +7,10 @@ import 'package:fossil_mobile/app/widget/app_start_page.dart';
 import 'package:fossil_mobile/features/auth/widget/login.dart';
 import 'package:fossil_mobile/features/auth/widget/register.dart';
 import 'package:fossil_mobile/features/hoses/widget/hose.dart';
+import 'package:fossil_mobile/features/hoses/widget/set_odometer.dart';
+import 'package:fossil_mobile/features/hoses/widget/set_vehicle.dart';
+import 'package:fossil_mobile/features/reports/widget/report.dart';
+import 'package:fossil_mobile/features/settings/widget/setting.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -16,15 +20,11 @@ final _key = GlobalKey<NavigatorState>(debugLabel: 'routerKey');
 
 @riverpod
 GoRouter router(RouterRef ref) {
-  // final notifier = ref.watch(routerNotifierProvider.notifier);
-
   return GoRouter(
     navigatorKey: _key,
-    // refreshListenable: notifier,
     debugLogDiagnostics: true,
     initialLocation: AppRoute.path,
     routes: $appRoutes,
-    //redirect: notifier.redirect,
   );
 }
 
@@ -68,11 +68,59 @@ class SignUpRoute extends GoRouteData {
 class HosePageRoute extends GoRouteData {
   const HosePageRoute();
 
-  static const path = '/hoses';
+  static const path = '/hose';
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return HosePage();
+  }
+}
+
+@TypedGoRoute<SetVehiclePageRoute>(path: SetVehiclePageRoute.path)
+class SetVehiclePageRoute extends GoRouteData {
+  const SetVehiclePageRoute();
+
+  static const path = '/hose/set-vehicle';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return SetVehiclePage();
+  }
+}
+
+@TypedGoRoute<SetOdometerPageRoute>(path: SetOdometerPageRoute.path)
+class SetOdometerPageRoute extends GoRouteData {
+  const SetOdometerPageRoute();
+
+  static const path = '/hose/set-odometer';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return SetOdometerPage();
+  }
+}
+
+@TypedGoRoute<ProfilePageRoute>(path: ProfilePageRoute.path)
+class ProfilePageRoute extends GoRouteData {
+  const ProfilePageRoute();
+
+  static const path = '/profile';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return Profile();
+  }
+}
+
+@TypedGoRoute<ReportPageRoute>(path: ReportPageRoute.path)
+class ReportPageRoute extends GoRouteData {
+  const ReportPageRoute();
+
+  static const path = '/report';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return Report();
   }
 }
 

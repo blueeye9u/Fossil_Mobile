@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fossil_mobile/common/button.dart';
-import 'package:fossil_mobile/common/label.dart';
-import 'package:fossil_mobile/constants/colors.dart';
+import 'package:fossil_mobile/shared/common/button.dart';
+import 'package:fossil_mobile/shared/common/label.dart';
+import 'package:fossil_mobile/shared/constants/colors.dart';
+import 'package:fossil_mobile/shared/constants/image_string.dart';
 import 'package:fossil_mobile/features/home/components/company.dart';
 import 'package:fossil_mobile/features/home/provider/company_provider.dart';
 import 'package:fossil_mobile/shared/http/app_exception.dart';
@@ -19,37 +20,14 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: secondaryColor,
-        leading: GestureDetector(
-          onTap: () {},
-          child: Padding(
-            padding: EdgeInsets.only(left: 16.0, top: 10.0, bottom: 1.0),
-            child: Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [secondaryColor, secondaryColor],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                  shape: BoxShape.circle),
-              child: Icon(
-                Icons.arrow_back_rounded,
-                color: Colors.white,
-                size: 33.0,
-              ),
-            ),
-          ),
-        ),
         automaticallyImplyLeading: false,
-        title: Transform.translate(
-          offset: Offset(-30, 5),
-          child: Align(
-            alignment: AlignmentDirectional(0, 0),
-            child: Label(
-              text: 'Home',
-              fontName: 'Readex Pro',
-              color: mainColor,
-              fontSize: 20,
-            ),
+        title: Align(
+          alignment: AlignmentDirectional(0, 0),
+          child: Label(
+            text: 'Home',
+            fontName: 'Readex Pro',
+            color: mainColor,
+            fontSize: 20,
           ),
         ),
         centerTitle: false,
@@ -69,7 +47,7 @@ class HomePage extends ConsumerWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.asset(
-                    'assets/images/fossil-logo.png',
+                    logoUrl,
                     width: 350,
                     height: 120,
                     fit: BoxFit.contain,
